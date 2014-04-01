@@ -12,6 +12,16 @@ and the mote rebooted.
 In TemperatureCollect.c, the data is transmitted via the RIME Collect protocol to a basestation,
 and the output can be saved to a file something like: "make login | tee saved.csv".
 
+Format is:
+LIGHT_SENSOR_PHOTOSYNTHETIC, LIGHT_SENSOR_TOTAL_SOLAR, SHT11_SENSOR_TEMP, SHT11_SENSOR_HUMIDITY, SENSOR_BATTERY
+
+Numeric Conversions:
+ - LIGHT_SENSOR_PHOTOSYNTHETIC:		L=RAW*10/7
+ - LIGHT_SENSOR_TOTAL_SOLAR:		L=RAW*10/7
+ - SHT11_SENSOR_TEMP:				T=RAW*0.01-39.6
+ - SHT11_SENSOR_HUMIDITY:			H=0.0405*RAW-0.0000028*(RAW*RAW)-4
+ - SENSOR_BATTERY:					V=RAW/4095*VREF*2 (VREF=2.5)
+
 George Smart, M1GEO george@george-smart.co.uk
 
 Telecommunications Research Group Office, Room 804;
